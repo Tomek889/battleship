@@ -67,3 +67,19 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+#player-board,
+#computer-board {
+  display: flex;
+  margin: 30px;
+}
+
+.cell {
+  border: 1px solid black;
+  width: 30px;
+  height: 30px;
+}
+
+.cell:hover {
+  background: rgba(0, 0, 0, 0.3)
+}

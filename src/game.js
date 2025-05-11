@@ -1,6 +1,6 @@
 import Player from './classes/Player';
 import Ship from './classes/Ship';
-import { renderBoard } from './dom';
+import { renderBoard, updateBoard } from './dom';
 
 export default function startGame() {
   const user = new Player(true);
