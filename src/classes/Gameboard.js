@@ -5,19 +5,24 @@ export default class Gameboard {
   }
 
   placeShip(ship, x, y, isHorizontal) {
-    for (let i = 0; i < ship.length; i += 1) {
-      if (isHorizontal) {
-        if (this.board[y][x + i] !== 0) {
-          return false;
-        }
+    if (isHorizontal) {
+      if (x + ship.length > 10) return false;
+      for (let i = 0; i < ship.length; i += 1) {
+        if (this.board[y][x + i] !== 0) return false;
+      }
+      for (let i = 0; i < ship.length; i += 1) {
         this.board[y][x + i] = ship;
-      } else {
-        if (this.board[y + 1][x] !== 0) {
-          return false;
-        }
+      }
+    } else {
+      if (y + ship.length > 10) return false;
+      for (let i = 0; i < ship.length; i += 1) {
+        if (this.board[y + i][x] !== 0) return false;
+      }
+      for (let i = 0; i < ship.length; i += 1) {
         this.board[y + i][x] = ship;
       }
     }
+
     return true;
   }
 
