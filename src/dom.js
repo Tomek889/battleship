@@ -1,4 +1,6 @@
-function renderBoard(board, elementId) {
+import { shootUser } from './game';
+
+export default function renderBoard(board, elementId) {
   const boardElement = document.getElementById(elementId);
   boardElement.innerHTML = '';
 
@@ -20,8 +22,20 @@ function renderBoard(board, elementId) {
 
       if (elementId === 'computer-board') {
         cell.addEventListener('click', () => {
-          board.receiveAttack(i, j);
-          updateBoard(board, elementId);
+          // todo: check whether that cell isn't missed yet, if no attack user's board
+          // and check whether all of the ships are sunk
+          if (board.board[j][i] === 0) {
+            board.receiveAttack(i, j);
+            updateBoard(board, elementId);
+
+            if (board.allShipsSunk()) {
+              gameOver('User');
+            }
+
+            shootUser();
+          } else {
+            console.log('you have clicked that cell already');
+          }
         });
       }
 
@@ -35,4 +49,8 @@ function updateBoard(board, elementId) {
   renderBoard(board, elementId);
 }
 
-export { renderBoard, updateBoard };
+function gameOver(winner) {
+  console.log(`${winner} has won the game!`);
+}
+
+export { gameOver };

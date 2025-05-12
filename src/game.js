@@ -1,6 +1,6 @@
 import Player from './classes/Player';
 import Ship from './classes/Ship';
-import renderBoard from './dom';
+import renderBoard, { gameOver } from './dom';
 
 let user;
 let computer;
@@ -37,6 +37,10 @@ function shootUser() {
 
   user.board.receiveAttack(randomX, randomY);
   renderBoard(user.board, 'player-board');
+
+  if (user.board.allShipsSunk()) {
+    gameOver('Computer');
+  }
 }
 
 export { shootUser };
