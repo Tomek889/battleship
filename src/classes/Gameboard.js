@@ -35,4 +35,9 @@ export default class Gameboard {
     }
     return true;
   }
+
+  resetBoard() {
+    this.board = Array.from({ length: 10 }, () => Array(10).fill(0));
+    this.missed = [];
+  }
 }
