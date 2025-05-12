@@ -10,7 +10,6 @@ export default function renderBoard(board, elementId) {
     for (let j = 0; j < 10; j += 1) {
       const cell = document.createElement('div');
       cell.classList.add('cell');
-      cell.setAttribute('info', board.board[j][i]);
 
       if (board.board[j][i] === 'hit') {
         cell.classList.add('hit');
@@ -18,6 +17,16 @@ export default function renderBoard(board, elementId) {
       if (board.board[j][i] === 'miss') {
         cell.innerHTML = 'X';
         cell.classList.add('miss');
+      }
+      if (
+        board.board[j][i] !== 0 &&
+        typeof board.board[j][i] === 'object' &&
+        elementId === 'player-board'
+      ) {
+        cell.classList.add('ship');
+      }
+      if (board.board[j][i] === 'hit') {
+        cell.classList.add('hit');
       }
 
       if (elementId === 'computer-board') {
@@ -33,7 +42,7 @@ export default function renderBoard(board, elementId) {
             }
 
             shootUser();
-          } else {
+          } else if (board.board[j][i] === 'miss') {
             console.log('you have clicked that cell already');
           }
         });

@@ -2,12 +2,17 @@ import Player from './classes/Player';
 import Ship from './classes/Ship';
 import renderBoard, { gameOver } from './dom';
 
+const placeBtn = document.querySelector('#placeBtn');
+
 let user;
 let computer;
 
 export default function startGame() {
   user = new Player(true);
   computer = new Player(false);
+
+  randomPlace(user.board, 'player-board');
+  randomPlace(computer.board, 'computer-board');
 
   renderBoard(user.board, 'player-board');
   renderBoard(computer.board, 'computer-board');
@@ -42,5 +47,29 @@ function shootUser() {
     gameOver('Computer');
   }
 }
+
+function randomPlace(board, elementId) {
+  board.resetBoard();
+
+  const shipsLength = [5, 4, 3, 3, 2];
+
+  shipsLength.forEach((len) => {
+    const ship = new Ship(len);
+
+    let randomX = Math.floor(Math.random() * 10);
+    let randomY = Math.floor(Math.random() * 10);
+
+    while (!board.placeShip(ship, randomX, randomY, Math.random() > 0.5)) {
+      randomX = Math.floor(Math.random() * 10);
+      randomY = Math.floor(Math.random() * 10);
+    }
+  });
+
+  renderBoard(board, elementId);
+}
+
+placeBtn.addEventListener('click', () => {
+  randomPlace(user.board, 'player-board');
+});
 
 export { shootUser };
