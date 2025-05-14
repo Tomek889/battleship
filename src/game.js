@@ -25,7 +25,10 @@ function shootUser() {
   let isLeftCell = false;
   for (let i = 0; i < 10; i += 1) {
     for (let j = 0; j < 10; j += 1) {
-      if (user.board.board[j][i] === 0) {
+      if (
+        user.board.board[j][i] !== 'miss' &&
+        user.board.board[j][i] !== 'hit'
+      ) {
         isLeftCell = true;
       }
     }
@@ -35,7 +38,10 @@ function shootUser() {
     return;
   }
 
-  while (user.board.board[randomY][randomX] !== 0) {
+  while (
+    user.board.board[randomY][randomX] === 'hit' ||
+    user.board.board[randomY][randomX] === 'miss'
+  ) {
     randomX = Math.floor(Math.random() * 10);
     randomY = Math.floor(Math.random() * 10);
   }
