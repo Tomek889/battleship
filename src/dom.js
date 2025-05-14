@@ -33,7 +33,7 @@ export default function renderBoard(board, elementId) {
         cell.addEventListener('click', () => {
           // todo: check whether that cell isn't missed yet, if no attack user's board
           // and check whether all of the ships are sunk
-          if (board.board[j][i] === 0) {
+          if (board.board[j][i] !== 'hit' && board.board[j][i] !== 'miss') {
             board.receiveAttack(i, j);
             updateBoard(board, elementId);
 
@@ -41,9 +41,10 @@ export default function renderBoard(board, elementId) {
               gameOver('User');
             }
 
+            console.log(board.board[j][i]);
             shootUser();
-          } else if (board.board[j][i] === 'miss') {
-            console.log('you have clicked that cell already');
+          } else {
+            console.log('You have clicked that cell already');
           }
         });
       }

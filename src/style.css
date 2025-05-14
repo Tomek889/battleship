@@ -94,11 +94,19 @@ h6 {
 }
 
 .ship {
-  background-color: rgb(102, 102, 235);
+  background: rgb(102, 102, 235);
+}
+
+.ship:hover {
+  background: rgb(78, 78, 236);
 }
 
 .hit {
-  background-color: rgb(23, 136, 23);
+  background: rgb(23, 136, 23);
+}
+
+.hit:hover {
+  background: rgb(8, 88, 8);
 }
 
 .hidden {
