@@ -96,6 +96,10 @@ function addInfo(text) {
   infoText.innerHTML = text;
 }
 
+function getInfoContent() {
+  return infoText.innerHTML;
+}
+
 placeBtn.addEventListener('click', () => {
   randomPlace(user.board, 'player-board');
 });
@@ -116,4 +120,4 @@ restartBtn.addEventListener('click', () => {
   startBtn.classList.toggle('hidden');
 });
 
-export { shootUser, getGameOn, setGameOff, clearInfo, addInfo };
+export { shootUser, getGameOn, setGameOff, clearInfo, addInfo, getInfoContent };

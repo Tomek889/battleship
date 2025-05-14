@@ -1,4 +1,11 @@
-import { shootUser, getGameOn, setGameOff, clearInfo, addInfo } from './game';
+import {
+  shootUser,
+  getGameOn,
+  setGameOff,
+  clearInfo,
+  addInfo,
+  getInfoContent,
+} from './game';
 
 export default function renderBoard(board, elementId) {
   const boardElement = document.getElementById(elementId);
@@ -47,7 +54,7 @@ export default function renderBoard(board, elementId) {
             } else {
               addInfo('You have clicked that cell already.');
             }
-          } else {
+          } else if (getInfoContent() === '') {
             addInfo('You have to start the game first.');
           }
         });
