@@ -5,6 +5,7 @@ import renderBoard, { gameOver } from './dom';
 const placeBtn = document.querySelector('#placeBtn');
 const startBtn = document.querySelector('#startBtn');
 const restartBtn = document.querySelector('#restartBtn');
+const infoText = document.querySelector('#info');
 
 let user;
 let computer;
@@ -85,6 +86,14 @@ function getGameOn() {
   return isGameOn;
 }
 
+function clearInfo() {
+  infoText.innerHTML = '';
+}
+
+function addInfo(text) {
+  infoText.innerHTML = text;
+}
+
 placeBtn.addEventListener('click', () => {
   randomPlace(user.board, 'player-board');
 });
@@ -104,4 +113,4 @@ restartBtn.addEventListener('click', () => {
   startBtn.classList.toggle('hidden');
 });
 
-export { shootUser, getGameOn, setGameOff };
+export { shootUser, getGameOn, setGameOff, clearInfo, addInfo };

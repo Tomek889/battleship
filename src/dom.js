@@ -1,4 +1,4 @@
-import { shootUser, getGameOn, setGameOff } from './game';
+import { shootUser, getGameOn, setGameOff, clearInfo, addInfo } from './game';
 
 export default function renderBoard(board, elementId) {
   const boardElement = document.getElementById(elementId);
@@ -29,17 +29,23 @@ export default function renderBoard(board, elementId) {
       if (elementId === 'computer-board') {
         cell.addEventListener('click', () => {
           if (getGameOn()) {
+            clearInfo();
             if (board.board[j][i] !== 'hit' && board.board[j][i] !== 'miss') {
               board.receiveAttack(i, j);
               renderBoard(board, elementId);
 
               if (board.allShipsSunk()) {
                 gameOver('User');
+                return;
               }
 
               shootUser();
+
+              if (board.allShipsSunk()) {
+                gameOver('Computer');
+              }
             } else {
-              console.log('you have clicked that cell already.');
+              addInfo('You have clicked that cell already.');
             }
           }
         });
@@ -53,7 +59,7 @@ export default function renderBoard(board, elementId) {
 
 function gameOver(winner) {
   setGameOff();
-  console.log(`${winner} has won the game!`);
+  addInfo(`${winner} has won the game!`);
 }
 
 export { gameOver };
