@@ -11,7 +11,7 @@
 
 * {
   margin: 0;
-  font-family: "Audiowide", sans-serif;
+  font-family: 'Audiowide', sans-serif;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -81,7 +81,7 @@ h1 {
   color: rgb(35, 130, 35);
 }
 
-p {
+#info {
   font-size: 1.6rem;
   min-height: 40px;
   text-shadow: 1px 1px 5px;
@@ -90,12 +90,20 @@ p {
 
 .boards {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 #player-board,
 #computer-board {
   display: flex;
-  margin: 30px;
+  margin: 30px 30px 0px 30px;
+}
+
+player {
+  display: flex;
+  flex-direction: column;
 }
 
 .cell {
@@ -103,10 +111,17 @@ p {
   width: 36px;
   height: 36px;
   background-color: black;
+  margin-bottom: 0px;
 }
 
 .cell:hover {
   background: rgba(85, 85, 85, 0.6);
+}
+
+.playerInfo {
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 5px;
+  color: rgb(35, 130, 35);
 }
 
 .miss {
@@ -137,8 +152,25 @@ p {
   display: none;
 }
 
+.buttons {
+  margin: 40px 40px 0px 40px;
+}
+
+.buttons button {
+  width: 350px;
+  font-size: 1.2rem;
+  padding: 5px 0px;
+  text-shadow: 1px 1px 5px;
+  color: rgb(35, 130, 35);
+  border: 1px solid rgb(35, 130, 35);
+  background: black;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 15px;
+}
+
 @media (max-width: 900px) {
   .boards {
-    display: block;
+    flex-direction: column;
   }
 }
