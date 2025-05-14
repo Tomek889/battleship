@@ -7,17 +7,33 @@ export default class Gameboard {
   placeShip(ship, x, y, isHorizontal) {
     if (isHorizontal) {
       if (x + ship.length > 10) return false;
+
+      // Check if the cells for the ship and the surrounding cells are empty
       for (let i = 0; i < ship.length; i += 1) {
         if (this.board[y][x + i] !== 0) return false;
+        if (x + i > 0 && this.board[y][x + i - 1] !== 0) return false;
+        if (x + i < 9 && this.board[y][x + i + 1] !== 0) return false;
+
+        if (y > 0 && this.board[y - 1][x + i] !== 0) return false;
+        if (y < 9 && this.board[y + 1][x + i] !== 0) return false;
       }
+
       for (let i = 0; i < ship.length; i += 1) {
         this.board[y][x + i] = ship;
       }
     } else {
       if (y + ship.length > 10) return false;
+
+      // Check if the cells for the ship and the surrounding cells are empty
       for (let i = 0; i < ship.length; i += 1) {
         if (this.board[y + i][x] !== 0) return false;
+        if (y + i > 0 && this.board[y + i - 1][x] !== 0) return false;
+        if (y + i < 9 && this.board[y + i + 1][x] !== 0) return false;
+
+        if (x > 0 && this.board[y + i][x - 1] !== 0) return false;
+        if (x < 9 && this.board[y + i][x + 1] !== 0) return false;
       }
+
       for (let i = 0; i < ship.length; i += 1) {
         this.board[y + i][x] = ship;
       }

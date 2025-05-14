@@ -12,6 +12,8 @@ let computer;
 let isGameOn = false;
 
 export default function startGame() {
+  clearInfo();
+
   user = new Player(true);
   computer = new Player(false);
 
