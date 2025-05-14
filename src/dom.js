@@ -31,7 +31,7 @@ export default function renderBoard(board, elementId) {
           if (getGameOn()) {
             if (board.board[j][i] !== 'hit' && board.board[j][i] !== 'miss') {
               board.receiveAttack(i, j);
-              updateBoard(board, elementId);
+              renderBoard(board, elementId);
 
               if (board.allShipsSunk()) {
                 gameOver('User');
@@ -39,7 +39,7 @@ export default function renderBoard(board, elementId) {
 
               shootUser();
             } else {
-              setGameOff();
+              console.log('you have clicked that cell already.');
             }
           }
         });
@@ -51,11 +51,8 @@ export default function renderBoard(board, elementId) {
   }
 }
 
-function updateBoard(board, elementId) {
-  renderBoard(board, elementId);
-}
-
 function gameOver(winner) {
+  setGameOff();
   console.log(`${winner} has won the game!`);
 }
 
