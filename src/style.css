@@ -69,6 +69,29 @@ h6 {
   isolation: isolate;
 }
 
+html {
+  text-align: center;
+  background: black;
+}
+
+h1 {
+  font-size: 3.2rem;
+  padding: 10px 0px;
+  text-shadow: 1px 1px 5px;
+  color: rgb(35, 130, 35);
+}
+
+p {
+  font-size: 1.6rem;
+  min-height: 40px;
+  text-shadow: 1px 1px 5px;
+  color: rgb(35, 130, 35);
+}
+
+.boards {
+  display: flex;
+}
+
 #player-board,
 #computer-board {
   display: flex;
@@ -76,14 +99,14 @@ h6 {
 }
 
 .cell {
-  border: 1px solid black;
-  width: 30px;
-  height: 30px;
-  background-color: #dddddd;
+  border: 1px solid rgb(35, 130, 35);
+  width: 36px;
+  height: 36px;
+  background-color: black;
 }
 
 .cell:hover {
-  background: rgba(0, 0, 0, 0.3)
+  background: rgba(85, 85, 85, 0.6);
 }
 
 .miss {
@@ -95,21 +118,27 @@ h6 {
 }
 
 .ship {
-  background: rgb(102, 102, 235);
+  background: rgb(35, 130, 35);
 }
 
 .ship:hover {
-  background: rgb(78, 78, 236);
+  background: rgba(35, 130, 35, 0.75);
 }
 
 .hit {
-  background: rgb(23, 136, 23);
+  background: rgb(163, 13, 13);
 }
 
 .hit:hover {
-  background: rgb(8, 88, 8);
+  background: rgba(163, 13, 13, 0.75);
 }
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 900px) {
+  .boards {
+    display: block;
+  }
 }

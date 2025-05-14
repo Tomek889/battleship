@@ -47,6 +47,8 @@ export default function renderBoard(board, elementId) {
             } else {
               addInfo('You have clicked that cell already.');
             }
+          } else {
+            addInfo('You have to start the game first.');
           }
         });
       }

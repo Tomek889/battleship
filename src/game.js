@@ -101,6 +101,7 @@ placeBtn.addEventListener('click', () => {
 });
 
 startBtn.addEventListener('click', () => {
+  clearInfo();
   isGameOn = true;
   restartBtn.classList.toggle('hidden');
   placeBtn.classList.toggle('hidden');

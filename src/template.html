@@ -14,8 +14,16 @@
   <body>
     <h1>BATTLESHIP</h1>
     <p id="info"></p>
-    <div id="player-board"></div>
-    <div id="computer-board"></div>
+    <div class="boards">
+      <div class="player">
+        <div id="player-board"></div>
+        <p class="playerInfo">User</p>
+      </div>
+      <div class="computer">
+        <div id="computer-board"></div>
+        <p class="playerInfo">Computer</p>
+      </div>
+    </div>
     <div class="buttons">
       <button type="button" id="placeBtn">Change Ships' Placement</button>
       <button type="button" id="startBtn">Start Game</button>
