@@ -3,9 +3,12 @@ import Ship from './classes/Ship';
 import renderBoard, { gameOver } from './dom';
 
 const placeBtn = document.querySelector('#placeBtn');
+const startBtn = document.querySelector('#startBtn');
+const restartBtn = document.querySelector('#restartBtn');
 
 let user;
 let computer;
+let isGameOn = false;
 
 export default function startGame() {
   user = new Player(true);
@@ -74,8 +77,31 @@ function randomPlace(board, elementId) {
   renderBoard(board, elementId);
 }
 
+function setGameOff() {
+  isGameOn = false;
+}
+
+function getGameOn() {
+  return isGameOn;
+}
+
 placeBtn.addEventListener('click', () => {
   randomPlace(user.board, 'player-board');
 });
 
-export { shootUser };
+startBtn.addEventListener('click', () => {
+  isGameOn = true;
+  restartBtn.classList.toggle('hidden');
+  placeBtn.classList.toggle('hidden');
+  startBtn.classList.toggle('hidden');
+});
+
+restartBtn.addEventListener('click', () => {
+  isGameOn = false;
+  startGame();
+  restartBtn.classList.toggle('hidden');
+  placeBtn.classList.toggle('hidden');
+  startBtn.classList.toggle('hidden');
+});
+
+export { shootUser, getGameOn, setGameOff };

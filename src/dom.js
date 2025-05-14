@@ -1,4 +1,4 @@
-import { shootUser } from './game';
+import { shootUser, getGameOn, setGameOff } from './game';
 
 export default function renderBoard(board, elementId) {
   const boardElement = document.getElementById(elementId);
@@ -25,23 +25,22 @@ export default function renderBoard(board, elementId) {
       ) {
         cell.classList.add('ship');
       }
-      if (board.board[j][i] === 'hit') {
-        cell.classList.add('hit');
-      }
 
       if (elementId === 'computer-board') {
         cell.addEventListener('click', () => {
-          if (board.board[j][i] !== 'hit' && board.board[j][i] !== 'miss') {
-            board.receiveAttack(i, j);
-            updateBoard(board, elementId);
+          if (getGameOn()) {
+            if (board.board[j][i] !== 'hit' && board.board[j][i] !== 'miss') {
+              board.receiveAttack(i, j);
+              updateBoard(board, elementId);
 
-            if (board.allShipsSunk()) {
-              gameOver('User');
+              if (board.allShipsSunk()) {
+                gameOver('User');
+              }
+
+              shootUser();
+            } else {
+              setGameOff();
             }
-
-            shootUser();
-          } else {
-            console.log('You have clicked that cell already');
           }
         });
       }
