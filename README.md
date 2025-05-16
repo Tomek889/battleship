@@ -1,7 +1,7 @@
 # Battleship Game
 This is a web-based implementation of the classic Battleship game, where players place ships on a 10x10 grid and take turns attacking each other to sink all ships. The game includes features like random ship placement, user vs. AI battles, and an interactive board to visualize the game.
 
-## Demo
+## 🎬 Demo
 ![Game Screenshot](./src/assets/images/screenshot.png)
 
 ## 🔨 Game Setup
@@ -14,7 +14,7 @@ The game is implemented using JavaScript, HTML, and CSS. It runs in the browser 
 - **Render Functions**: Renders the gameboard to the DOM and updates it based on the game state (hit/miss).
 - **Game Flow**: The player places ships, then starts the game. During the game, the player and computer take turns attacking until one party sinks all the ships of the opponent.
 
-## ⚓️ How to Play
+## 🕹 How to Play
 1. Place Your Ships:
 - You can place your ships by clicking the "Place Ships" button. This will randomly position your ships on the grid.
 
